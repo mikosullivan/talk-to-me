@@ -1,0 +1,10 @@
+{
+	"meta": {
+		"title": "talk-to-me"
+	},
+	
+	"files": false,
+	"commands": [
+		["rake-bryton.rb"]
+	]
+}

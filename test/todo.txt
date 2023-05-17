@@ -1,18 +1,21 @@
-@io defaults to nil
+✓ output handles
+	✓ nil
+	✓ stdout
+	✓ stderr
+	✓ string
+	✓ file
 
-output display values
-	nil
-	empty string
-	no-content string
+✓ indent
 
-opts_to_hash
-	no params
-		{}
-	nil param
-		{'str'=>'[nil]'}
-	hash
-		same hash
-	anything else
-		{'str'=>object.to_s}
+✓ output strings
+	✓ nil
+	✓ empty string
+	✓ no content string
 
-cannot set indent to less than zero
+✓ show
+	✓ hash
+		✓ empty
+		✓ content
+	✓ array
+		✓ empty
+		✓ content

@@ -137,6 +137,11 @@ module TTM
 	def self.indent(*opts)
 		opts = opts_to_hash(*opts)
 		
+		# output header if one was sent
+		if opts['str']
+			puts opts['str']
+		end
+		
 		# if block given, temporarily set indent, then revert
 		if block_given?
 			hold_indent = @indent

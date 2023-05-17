@@ -18,25 +18,72 @@ class TTMTest < Minitest::Test
 		end
 	end
 	
+	# compare
+	def compare(dir)
+		cpt = capture(dir)
+		assert_equal cpt.stdout, should(dir)
+	end
+	
 	# by default, TTM shouldn't output anything
 	def test_nil
-		dir = 'nil'
+		dir = 'handles/nil'
 		cpt = capture(dir)
 		refute cpt.stdout.match(/\S/mu)
 	end
 	
-	# simple stdout test
+	# stdout
 	def test_stdout
-		dir = 'stdout'
-		cpt = capture(dir)
-		assert_equal cpt.stdout.rstrip, should(dir).rstrip
+		dir = 'handles/stdout'
+		compare dir
 	end
 	
-	# simple stderr test
+	# stderr
 	def test_stderr
-		dir = 'stderr'
+		dir = 'handles/stderr'
 		cpt = capture(dir)
-		assert_equal cpt.stderr.rstrip, should(dir)
+		assert_equal cpt.stderr, should(dir)
+	end
+	
+	# output to file
+	# TODO: Need to learn how to issue a warning if this test can't be run.
+	def test_file
+		if File.exist?('/tmp')
+			dir = 'handles/file'
+			cpt = capture(dir)
+			path = cpt.stdout
+			content = File.read(path).rstrip
+			assert_equal content, should(dir)
+			
+			# delete tmp file, but don't bother dealing with an error
+			begin
+				File.delete path
+			rescue
+			end
+		end
+	end
+	
+	# string
+	def test_string
+		dir = 'handles/string'
+		compare dir
+	end
+	
+	# indent
+	def test_indent
+		compare 'indent'
+	end
+	
+	# display-string
+	def test_display_string
+		compare 'display-string'
+	end
+	
+	# show
+	def test_show
+		compare 'show/hash/empty'
+		compare 'show/hash/content'
+		compare 'show/array/empty'
+		compare 'show/array/content'
 	end
 end
 
@@ -47,10 +94,10 @@ class TTMTest::Capture
 	end
 	
 	def stdout
-		return @results[0]
+		return @results[0].rstrip
 	end
 	
 	def stderr
-		return @results[1]
+		return @results[1].rstrip
 	end
 end
