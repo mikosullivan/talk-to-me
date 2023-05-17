@@ -14,7 +14,7 @@ class TTMTest < Minitest::Test
 	# slurp in should.txt
 	def should(dir)
 		Dir.chdir("scripts/#{dir}") do
-			return TTMTest::Capture.new('./script.rb')
+			return File.read('./should.txt').rstrip
 		end
 	end
 	
@@ -24,21 +24,32 @@ class TTMTest < Minitest::Test
 		cpt = capture(dir)
 		refute cpt.stdout.match(/\S/mu)
 	end
+	
+	# simple stdout test
+	def test_stdout
+		dir = 'stdout'
+		cpt = capture(dir)
+		assert_equal cpt.stdout.rstrip, should(dir).rstrip
+	end
+	
+	# simple stderr test
+	def test_stderr
+		dir = 'stderr'
+		cpt = capture(dir)
+		assert_equal cpt.stderr.rstrip, should(dir)
+	end
 end
 
 # class for capturing the output of a script
 class TTMTest::Capture
-	# initialize
 	def initialize(*cmd)
 		@results = Open3.capture3(*cmd)
 	end
 	
-	# stdout
 	def stdout
 		return @results[0]
 	end
 	
-	# stderr
 	def stderr
 		return @results[1]
 	end
