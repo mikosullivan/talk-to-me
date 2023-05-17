@@ -1,0 +1,18 @@
+@io defaults to nil
+
+output display values
+	nil
+	empty string
+	no-content string
+
+opts_to_hash
+	no params
+		{}
+	nil param
+		{'str'=>'[nil]'}
+	hash
+		same hash
+	anything else
+		{'str'=>object.to_s}
+
+cannot set indent to less than zero
