@@ -1,4 +1,4 @@
-# talk-to-me
+# Tatum
 Ruby utility for outputting info to STDOUT, STDERR, a string, or a file.
 
 
@@ -7,7 +7,7 @@ Ruby utility for outputting info to STDOUT, STDERR, a string, or a file.
 The usual:
 
 ```
-gem install talk-to-me
+gem install tatum
 ```
 
 ## Use
@@ -56,4 +56,4 @@ mike@idocs.com
 
 | version  | date         | notes           |
 |----------|--------------|-----------------|
-| 1.0      | May 17, 2023 | Initial upload. |
+| 1.0      | May 18, 2023 | Initial upload. |

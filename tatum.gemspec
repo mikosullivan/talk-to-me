@@ -1,16 +1,16 @@
 Gem::Specification.new do |spec|
-	spec.name        = 'talk-to-me'
+	spec.name        = 'tatum'
 	spec.version     = '1.0'
 	spec.date        = '2023-05-18'
-	spec.summary     = 'Talk to me'
+	spec.summary     = 'Tatum'
 	spec.description = "Utilities for outputting information to the user"
 	spec.authors     = ["Mike O'Sullivan"]
 	spec.email       = 'mike@idocs.com'
-	spec.homepage    = 'https://github.com/mikosullivan/talk-to-me'
+	spec.homepage    = 'https://github.com/mikosullivan/tatum'
 	spec.license     = 'MIT'
 	
 	spec.files = [
-		'lib/talk-to-me.rb',
+		'lib/tatum.rb',
 		'README.md',
 	];
 	
