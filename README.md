@@ -45,6 +45,7 @@ You can also set TTM back to not outputting to anything:
 TTM.io = nil  # don't output to anything
 ```
 
+See the documentation in talk-to-me.rb for details.
 
 ## Author
 
