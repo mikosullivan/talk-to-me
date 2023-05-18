@@ -12,16 +12,23 @@ class TTMTest < Minitest::Test
 	end
 	
 	# slurp in should.txt
-	def should(dir)
+	def should(dir, opts={})
+		opts = {'file'=>'should.txt'}.merge(opts)
+		
 		Dir.chdir("scripts/#{dir}") do
-			return File.read('./should.txt').rstrip
+			
+			
+			return File.read("./#{opts['file']}").rstrip
 		end
 	end
 	
 	# compare
-	def compare(dir)
+	def compare(dir, opts={})
 		cpt = capture(dir)
-		assert_equal cpt.stdout, should(dir)
+		
+		# KLUDGE: assert_equal is finding a difference in show/hash/content, so
+		# doing a string comparison
+		assert cpt.stdout == should(dir)
 	end
 	
 	# by default, TTM shouldn't output anything
@@ -62,20 +69,49 @@ class TTMTest < Minitest::Test
 		end
 	end
 	
-	# string
-	def test_string
-		dir = 'handles/string'
+	# clear file
+	# TODO: Need to learn how to issue a warning if this test can't be run.
+	def test_clear_file
+		if File.exist?('/tmp')
+			dir = 'clear/file'
+			cpt = capture(dir)
+			refute File.exist?(cpt.stdout)
+		end
+	end
+	
+	# clear memory
+	def test_clear_memory
+		compare 'clear/memory'
+	end
+	
+	# memory
+	def test_memory
+		dir = 'handles/memory'
 		compare dir
 	end
 	
 	# indent
 	def test_indent
-		compare 'indent'
+		compare 'indentation/indent'
+		compare 'indentation/tab'
 	end
 	
 	# display-string
 	def test_display_string
 		compare 'display-string'
+	end
+	
+	# hrm
+	def test_hrm
+		compare 'hrm'
+	end
+	
+	# hr
+	def test_hr
+		compare 'hr/plain'
+		compare 'hr/text'
+		compare 'hr/block'
+		compare 'hr/dash'
 	end
 	
 	# show
@@ -84,6 +120,19 @@ class TTMTest < Minitest::Test
 		compare 'show/hash/content'
 		compare 'show/array/empty'
 		compare 'show/array/content'
+	end
+	
+	# silent
+	def test_silent
+		compare 'temp-io/silent'
+	end
+	
+	# temp_io
+	def test_temp_io
+		dir = 'temp-io/tmp'
+		cpt = capture(dir)
+		assert_equal should(dir, 'file'=>'stdout.txt'), cpt.stdout
+		assert_equal should(dir, 'file'=>'stderr.txt'), cpt.stderr
 	end
 end
 

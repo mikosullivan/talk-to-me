@@ -1,6 +1,7 @@
-+--------+------------+
-| active | true       |
-| first  | Michael    |
-| last   | O'Sullivan |
-| member | false      |
-+--------+------------+
++-------------------+---------------------+
+| array             | [Joe | Mekonnan]    |
+| empty-string      | [empty-string]      |
+| nil               | [nil]               |
+| no-content-string | [no-content-string] |
+| string            | dude                |
++-------------------+---------------------+

@@ -1,0 +1,3 @@
+[a]
+  [stuff sent to STDOUT]
+  [more stuff sent to STDOUT]

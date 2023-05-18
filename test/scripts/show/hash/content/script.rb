@@ -4,11 +4,20 @@ require 'talk-to-me'
 TTM.io = STDOUT
 
 # build hash
-hsh = {}
-hsh['first'] = 'Michael'
-hsh['last'] = "O'Sullivan"
-hsh['member'] = false
-hsh['active'] = true
+hsh = {
+	'string' => 'dude',
+	
+	'nil' => nil,
+	
+	'empty-string' => '',
+	
+	'no-content-string' => '   ',
+	
+	'array' => [
+		'Joe',
+		'Mekonnan'
+	]
+};
 
 # show
 TTM.show hsh
