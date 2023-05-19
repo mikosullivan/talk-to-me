@@ -1,0 +1,3 @@
+[6 script.rb]
+[7 script.rb] whatever
+[8 script.rb devexit] whatever

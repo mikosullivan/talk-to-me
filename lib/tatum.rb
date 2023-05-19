@@ -475,7 +475,7 @@ module TTM
 		loc = caller_locations()[opts['stack']]
 		
 		# initialize output string
-		out = "[#{loc.lineno} #{File.basename(loc.path)}"
+		out = "[#{loc.lineno} #{::File.basename(loc.path)}"
 		
 		# add included string if sent
 		if opts['include']

@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
 	spec.name        = 'tatum'
-	spec.version     = '1.0'
-	spec.date        = '2023-05-18'
+	spec.version     = '1.1'
+	spec.date        = '2023-05-19'
 	spec.summary     = 'Tatum'
 	spec.description = "Utilities for outputting information to the user"
 	spec.authors     = ["Mike O'Sullivan"]

@@ -45,7 +45,7 @@ You can also set TTM back to not outputting to anything:
 TTM.io = nil  # don't output to anything
 ```
 
-See the documentation in talk-to-me.rb for details.
+See the documentation in tatum.rb for details.
 
 ## Author
 
@@ -54,6 +54,7 @@ mike@idocs.com
 
 ## History
 
-| version  | date         | notes           |
-|----------|--------------|-----------------|
-| 1.0      | May 18, 2023 | Initial upload. |
+| version  | date         | notes                       |
+|----------|--------------|-----------------------------|
+| 1.0      | May 18, 2023 | Initial upload.             |
+| 1.1      | May 19, 2023 | Minor fix to documentation. |

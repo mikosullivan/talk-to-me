@@ -134,6 +134,11 @@ class TTMTest < Minitest::Test
 		assert_equal should(dir, 'file'=>'stdout.txt'), cpt.stdout
 		assert_equal should(dir, 'file'=>'stderr.txt'), cpt.stderr
 	end
+	
+	# line
+	def test_line
+		compare 'line'
+	end
 end
 
 # class for capturing the output of a script
